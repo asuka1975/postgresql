@@ -1,0 +1,3 @@
+#/usr/bin/env bash
+
+cat /tmp/testname.csv | awk $'{print "INSERT INTO users(name) VALUES (\'" $0 "\');"}' | psql -h db -U postgres -d postgres

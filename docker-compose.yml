@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine3.18
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+  client:
+    build:
+      context: .
+      dockerfile: psql-client/Dockerfile
+    tty: true
